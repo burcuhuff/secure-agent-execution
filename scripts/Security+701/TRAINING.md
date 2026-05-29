@@ -63,10 +63,10 @@ This is a personal documentation of the Professor Messer Security+ 701 Training.
 <img width="1256" height="603" alt="1.3 Authentication" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/1.2%20Authentication.png?raw=true" />
 
 - Digital Signature:
-<img width="1256" height="603" alt="1.3 Digital Signature" src="<img width="1918" height="1076" alt="image" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/1.2%20Digital%20Signature.png?raw=true" />
+<img width="1256" height="603" alt="1.3 Digital Signature" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/1.2%20Digital%20Signature.png?raw=true" />
 
 - Verification of Digital Signature:
-<img width="1256" height="603" alt="1.3 Verification of Digital Signature" src="<img width="1918" height="1076" alt="image" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/1.4%20Verifying%20Digital%20Signature.png?raw=true" />
+<img width="1256" height="603" alt="1.3 Verification of Digital Signature" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/1.4%20Verifying%20Digital%20Signature.png?raw=true" />
 
 - Zero Trust:
 <img width="1256" height="603" alt="1.3 Zero Trust" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/1.2%20Zero%20Trust%20.png?raw=true" />
@@ -108,11 +108,34 @@ This is a personal documentation of the Professor Messer Security+ 701 Training.
 - Example: "Stuxnet Worm"
 
 ### 2.3 Vulnerability Identification
+- Memory Injections
+- Buffer Overflows
+- Race Condition
+- Malicious Updates
+- OS System Vulnerabilities
+- SQL Injection
+- Cross-site Scripting
+- Virtualization Vulnerabilities
+- Supply Chain Vulnerabilities
+- Misconfiguration Vulnerabilities
+- Mobile Device Vulnerabilities
+- Zero-day Vulnerabilities
 ### 2.4 Indicators of Malicious Activity
+- Malware
+- Viruses and Worms
+- Spyware and Bloatware
+- Physical attack
+- Denial of Service attacks
+- Wireless attacks
+- Replay attacks
+- Malicious code
+- Application attacks
+- Cryptographic attacks
+- Password attacks
 ### 2.5 Mitigation Techniques
-
-
-
+- Segmentation and Access control
+- Mitigation echniques
+  
 ---
 
 ## Section 3: Security Architecture
