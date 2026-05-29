@@ -27,6 +27,8 @@ This is a personal documentation of the Professor Messer Security+ 701 Training.
 
 - Hands-On ==> ProfessorMesser.com
 
+<img width="1256" height="603" alt="1 0 Overview" src="https://github.com/user-attachments/assets/86ade7c3-3e1e-4141-8b35-59a396a383f4" />
+
 ---
 
 ## Section 1: General Security Concepts
