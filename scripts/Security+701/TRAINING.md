@@ -124,8 +124,13 @@ This is a personal documentation of the Professor Messer Security+ 701 Training.
 - Malware
 - Viruses and Worms
 - Spyware and Bloatware
-- Physical attack
+- Physical Attacks(ex: RFID cloning done by cloners sold on Amazon)
 - Denial of Service attacks
+  - Forcing a service to fail
+  - DDoS: Distributed Denial of Service (launching an arm pf computers)
+  - DDoS is an Asymetric Threat (number of attackers vs the number of services they reach)
+  - DNS amplification DDoS
+  <img width="1256" height="603" alt="1.4 DOS Amplification Distributed" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/1.4%20DDoS.png?raw=true" />
 - Wireless attacks
 - Replay attacks
 - Malicious code
