@@ -131,6 +131,12 @@ This is a personal documentation of the Professor Messer Security+ 701 Training.
   - DDoS is an Asymetric Threat (number of attackers vs the number of services they reach)
   - DNS amplification DDoS
   <img width="1256" height="603" alt="1.4 DOS Amplification Distributed" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/1.4%20DDoS.png?raw=true" />
+  - DNS Poisining Attacks:
+      - Modifies DNS server over the client host file that precedent over DNS queries.
+      - Attack takes place by sending a fake response to a valis DNS request
+      - Requirs a redirectioon of the original request
+      - Occurs real time redirection
+      - It's an on-path attack
 - Wireless attacks
 - Replay attacks
 - Malicious code
