@@ -143,6 +143,8 @@ This is a personal documentation of the Professor Messer Security+ 701 Training.
     - Main vulnerability associated with this attack relates to the 802.11 management frames that are sent and recieved by the access point to and from your machine.
     - Management frames are used to connect your device to the wireless network, manage connection, and disconnect from the network when we done with the wireless connection.
     - The connection and disconnection requires authentication and deauthentication of the device and the earlier versions of these management frames (802.11) didn't have the necessary security protocols (no encryption).
+    - Packet capture on 802.11
+    <img width="1256" height="603" alt="Packet capture on 802.11 wireless network" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/2.4%20Packet%20Capture%20on%20802.11.png?raw=true" />
     - IEEE has upgraded the management frames to 802.11ac by encrypting some of the important management frames (disassociate, deauthenticate, channel switch annoucements etc).
     - Sample Wireless Attack:
         - Getting the information from the network: Running a command with airodump-ng utility and specifying the wirelss connection:
