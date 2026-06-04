@@ -159,18 +159,71 @@ This is a personal documentation of the Professor Messer Security+ 701 Training.
         <img width="1256" height="603" alt="Wireless Attack device can't connect while the deauth frames are sent" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/2.4%20Wireless%20Attack%20-%20device%20can't%20connect%20while%20deauth%20frames%20are%20being%20sent.png?raw=true" />
 - On-Path attacks:
     - Invisible to the victim.
-    - ARP poisoning (Address Resolution Protocol spoofing)
-    <img width="1256" height="603" alt="legiminate ARP connectio" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/2.4%20ARP%20Poisoning%201.png?raw=true" />
+    - ARP poisoning (Address Resolution Protocol spoofing) to redirect the traffic to attacker›
+    <img width="1256" height="603" alt="legiminate ARP connection" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/2.4%20ARP%20Poisoning%201.png?raw=true" />
     <img width="1256" height="603" alt="attacker overwriting the cache" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/2.4%20ARP%20Poisoning%202.png?raw=true" />
     <img width="1256" height="603" alt="attacker taking over the communication with the router" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/2.4%20ARP%20Poisoning%203.png?raw=true" />
 - Replay attacks
+    - Use salting to change hashing time
+    - Information stored in cookies, especially sessionIDs --> Tools like Wireshark or Kismet can capture packets containing cookies and sessionIDs.
+    - Exploits Cross-sire scripting
+    - Headers can be modifed
+    - Everything can be crypted, Force-TLS
 - Malicious code
+    - WannaCry ransomware: Executable expoited a vulnerability in Windows SMBv1
+    - British Airways cross-site scripting with 22 lines of malicous JavaScript code
+    - Estonian Central Health Database: SQL injection breaching all healtcare information for an entire country
 - Application attacks
+    - Code injection by adding your own information, enabled by bad programming (not handling input/outut), driven by multiple injectables like HTML, SQL, XML, LDAP etc.
+    - Buffer overflow writes into the memory and explicitly tries to spill over into the other memory areas, enabled by bad programming not checking inout/output errors causing bound check failures, not an easy exploit because memory allocation works differently in different systems and applications but once a consistent buffer overflow exploited it a system can be compromised.
+    - Replay attacks, transmitted over network, information can be reserved to the server to gain access. ARP poisoning, sessionId hacking etc are one of the replay attacks.
+    - Privilege esclation by gaining higher-level access to a system, a common attack type - or horizontal access to gain access to another user. CVE-2023-29336 May 2023 Win32k Kernel driver on Windows10 to give SYSTEM privilege.
+    - Cross-site request, Cross-site request forgery (XSRF, CSRF - sea surf), many websites use anti-forgery techniques added usually with a cryptographic token to prevent a forgery. Attacker sends a link targetting to a secure login application flow and if the victim clicks on the link while they're logged in, the web server can take the attacker's request while the user is securely logged in to their system.
+    <img width="1256" height="603" alt="XSRF" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/2.4%20XSRF.png?raw=true" />
+    - Directory traversal / path traversal - read files from a webserver that are outside of the website file directory. Example: "GET http:.//www.example.com/show.asp?view=../../Windows/system.ini HTTP/1.1"
 - Cryptographic attacks
+    - Implementation of cryptography is most common
+    - Brithday attack - in a classroom of 23 students the chance of sharing a birthday is about 50% => Hash collision is the same idea, shorter the hash output size, higher the chances of an attacker to find a hash collision.
+    - MD5 (Message Digest Algorithm 5) published in 1992, collision identified in 1996, in 2008 researchers created  CA certificate that wasn't signed for a digital certificate but marked legitimate when MD5 is checked.
+    - With 2 plain texts with differences highlited in red, MD5 creates the same hash causing collision
+    <img width="1256" height="603" alt="MD5 Hash Collision" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/2.4%20Hash%20Collision%20MD5.png?raw=true" />
+    - Downgrade attacks
+        - SSL stripping
+            - Combines an on-path attack with a downgrade attack
+            - Difficult to implement
+            - Attacker takes advantage of HTTP request instead of HTTPS, user sends a http request to a webserver, using on-path attack the attacker interjects the http request and sends it to the web server.
+            - Web server responds to the attacker with 301, attacker sends the request again with https and recieves 200 HTTPS and forwards that 200 in HTTP to the client visitor. After this everthing the client sends occurs on the clear as the attacker captures, views, and some cases modifies the communication in the middle.
+            <img width="1256" height="603" alt="SSL Stripping" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/2.4%20SSL%20Stripping.png?raw=true" />
 - Password attacks
+     - Spraying attacks: Try without error attack on passwords using most commonly used passwords only for 3 times to move to the next account.
+     - Brute-Force: Trying the password until it matched to the hash
+     <img width="1256" height="603" alt="Password Hash Brute-Force" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/2.4%20Password%20Hash%20Brute-Force.png?raw=true" />
+- IOC (Indicators of Compromise)
+    - An event that indicates an intrusion
+    - Account locked out with exceed login attemps
+    - Checking authentication logs
+    - Resource consumption, file transfers use bandwitdh
+    - Out-of-cycle logs showing patches occuring unsual schedule could be an indicator
+    - Firewall log activity
+    - Log information is evidence - creater report based on log activity before the logs modified and cleaned by attacker
 ### 2.5 Mitigation Techniques
 - Segmentation and Access control
+    - Pyhsical, logical, or virtual segmentations
+    - High-bandwith applications can be segmented for perfromance reasons
+    - Users to resources can be segmented for security reasons
+    - Mandated segmentation for compliane reasons to make controls much easier
+    - ACLs (Access Control Lists) allowing or diallowing traffic to groups, categories, source IPs, port number, time of the day, application etc.
 - Mitigation echniques
+    - Patching (System stability, security fixes)
+    - Monthly updates
+    - Third-party updates
+    - Auto-updates
+    - Emergency out-of-band updates
+    - Encryption to prevent access to application data files (EFS - encrypting file system, FDE - full disk encryption BitLocker, FileVault etc)
+    - Application data encryption
+    - Aggregte information from devices built-in sensors, servers, switches, routers, filewalls => SIEM consoles to collect all the information and monitor the data
+    - Least privilege
+    - Decommisioning old devices
   
 ---
 
