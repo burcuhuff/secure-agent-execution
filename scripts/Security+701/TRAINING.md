@@ -234,7 +234,13 @@ This is a personal documentation of the Professor Messer Security+ 701 Training.
 
 ## Section 3: Security Architecture
 **Topics:**
-### 3.1 Security Implications of Architecture Models
+### 3.1 Cloud Infrastructures
+- IaaS - infrastructure as a service
+- PaaS - platform as a service
+- SaaS - software as a service
+<img width="1256" height="603" alt="Cloud Infrastructures" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/3.1%20Cloud%20Infrastrucrure.png?raw=true" />
+- FaaS - Function  as a service (serveless archutecture) applocations are seperated into autnomous functions regarless of infrastructure runs underneath
+    - <p><img width="250" height="300" alt="Monolithic Architecture" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/3.1%20Monolithic%20Architecture.png?raw=true" /> <img width="300" heigth="300" alt="Microservice Architecture" src="https://github.com/burcuhuff/secure-agent-execution/blob/main/scripts/Security+701/3.1%20Microservice%20Architecture.png?raw=true" /></p>
 ### 3.2 Enterprise Infrastructure Security
 ### 3.3 Data Protection
 ### 3.4 Resilience and Recovery
