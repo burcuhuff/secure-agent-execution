@@ -252,7 +252,9 @@ This is a personal documentation of the Professor Messer Security+ 701 Training.
 ### 3.2 Applying Security Principles
 - Secure Infrastructures
 - Intrusion Prevention (Fail-Open / Fail-Closed)
-- Network Appliances (Jump server, Proxies - explicit or transparent, HTTTP, HTTPS, etc, Forward Proxy, Reverse Proxy, Open Proxy)
+- Network Appliances (Jump server, Proxies (providing caching) - explicit or transparent, HTTTP, HTTPS, etc, Forward Proxy, Reverse Proxy, Open Proxy, Load Balancers
+    - Active/Active(caching and content switching, prioritatization)
+    - Active/Passive - > passive means "on stand-by", cane be active upon other server failures
 - Port Security
 - Firewall Types
 - Secure Communication
