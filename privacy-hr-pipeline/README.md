@@ -10,7 +10,21 @@
 
 - Add differential privacy for aggregate queries (avg salary by dept, with epsilon-delta noise)
 
+# Data Set
+## Why Correlated Salary Bands?
+- Realism Factor: In a real company, human resources data is never truly random. An engineer with 10 years of experience naturally makes more than a newly hired coordinator. Tying salary to department and adding a $1,000 * tenure bump mimics real corporate compensation structures. 
 
+- The Privacy Risk Testing: By creating realistic, predictable salary bands, we create statistical patterns. In data privacy, this allows us to test whether our data masking techniques can successfully hide individual identities while still preserving the overall company wide salary trends for analysts.
+
+## Why Seed the Random Generator?
+- The Reproducibility Requirement: If we don't use a seed, every single run of our script creates a chaotic new batch of employees. If a bug crashes your pipeline on row 4,112, we could never replicate that exact crash again.
+
+- The Scientific Control: Locking the seed at personally picked 826 provides a "control group" for our data privacy experiments. We can run our masking algorithms on the exact same input dataset over and over again, allowing us to measure precisely how much privacy we are adding without the data changing under your feet.
+
+## Why Cap Age at 22–65?
+- Eliminating "Data Noise": Python's statistical functions (np.random.normal) use infinite mathematical bell curves. Without guardrails, the math would occasionally generate a 4-year-old software engineer or a 115-year-old HR manager. 
+
+- Corporate Compliance Guardrails: The max(22, min(65, age)) code enforces realistic workforce boundaries. It assumes a typical post college entry age (22) and standard corporate retirement thresholds (65), ensuring your downstream privacy pipeline isn't wasted processing impossible edge cases.
 
 # Build sequence
 
