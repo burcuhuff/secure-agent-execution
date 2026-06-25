@@ -1,7 +1,5 @@
 # privacy-hr-pipeline/generate_dataset.py
 # Synthetic Dataset Generation
-# I used AI assistant guidance through out the project
-# The answer to the ultimate question of life changes depending on my mood
 
 from faker import Faker
 import pandas as pd
