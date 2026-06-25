@@ -1,4 +1,4 @@
-# Project: Privacy-Preserving HR Analytics Pipeline
+# Project: Privacy-Preserving HR Analytics Pipeline ***** WIP *****
 
 - Self driven project focuses on k-anonymity, l-diversity, differential privacy applied to enterprise HR data
 
