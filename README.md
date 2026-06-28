@@ -2,13 +2,13 @@
 
 This repository documents two complementary aspects of the Secure Agent Execution Platform.
 
-The first presents the overall system developed as part of the UC Berkeley Master of Information and Data Science (MIDS) Capstone, including the project goals, system architecture, and collaborative design.
+The first presents the backend system I independently designed and developed as part of the UC Berkeley Master of Information and Data Science (MIDS) Capstone, including the specific secuirty goals and overall system architecture design.
 
 The second highlights my independent work in Privacy Engineering, where I designed and implemented the security architecture for securely executing untrusted AI agent code. This work extends beyond the capstone deliverables and focuses on practical security and privacy engineering principles applicable to enterprise AI systems.
 
 # Repository Guide
 
-## 🚀 Capstone Project
+## 🚀 1. Security Component of the MIDS Capstone Project
 
 Learn about the overall project, including:
 
@@ -17,11 +17,11 @@ Learn about the overall project, including:
 - Team collaboration
 - Design decisions
 
-➡️ **[View the Capstone Documentation](./mids_capstone/README.md)**
+➡️ **[View the Capstone Documentation](./capstone/README.md)**
 
 ---
 
-## 🔒 Privacy Engineering Portfolio
+## 🔒 2. Privacy Engineering Portfolio
 
 Explore my individual engineering work, including:
 
@@ -32,4 +32,4 @@ Explore my individual engineering work, including:
 - Secure cloud storage
 - Backend implementation
 
-➡️ **[View the Privacy Engineering Documentation](./privacy-engineering/README.md)**
+➡️ **[View the Privacy Engineering Documentation](./privacy-hr-pipeline/README.md)**
