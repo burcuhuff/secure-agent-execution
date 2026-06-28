@@ -174,4 +174,4 @@ The broader platform included a frontend UI built by a teammate. The full projec
 
 ---
 
-*Burcu Huffman · UC Berkeley MIDS '25 · AI Security & Privacy Engineering*
+*Burcu Huff · UC Berkeley MIDS '25 · AI Security & Privacy Engineering*
