@@ -85,3 +85,22 @@ To recreate the environment: ```pip install -r requirements.txt```
 ### Notes: 
 
 - Press Cmd + Shift + P to open the Command Palette.Type Python: Select Interpreter and select it.Look for the entry that says ('venv': venv) or shows the path containing privacy-hr-pipeline/venv/bin/python. Click it.
+
+- Repo name changed, venv connection not available at the repo level
+  ```
+  cd ai-security-portfolio/privacy-hr-pipeline
+  deactivate
+  rm -rf venv
+  python3 -m venv venv
+  source venv/bin/activate
+  pip install pandas numpy faker jupyter matplotlib
+  jupyter notebook
+
+  ```
+  otherwise
+  ```
+  python3 -m venv venv
+  source venv/bin/activate
+  jupyter notebook
+
+  ```
