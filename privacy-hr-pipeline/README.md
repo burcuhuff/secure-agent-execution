@@ -45,10 +45,12 @@ Laplace mechanism for aggregate queries (avg salary, headcount by dept) with con
 
 Streamlit or Flask app showing original vs anonymized vs differentially-private results side by side. 
 
-### Tab1-skeleton
+### Dashboard progress
+<p>
+<img width="300" height="300" alt="Tabs skeleton" src="https://github.com/burcuhuff/AI-Security-Portfolio/blob/main/scripts/Security+701/images/Dashboard-Tab1-Skeleton.png?raw=true">
 
-<img width="300" height="300" src="https://github.com/burcuhuff/AI-Security-Portfolio/blob/main/scripts/Security+701/images/Dashboard-Tab1-Skeleton.png?raw=true">
-
+<img width="300" height="300" alt="Tabs 1 and 2, Sidebar" src="https://github.com/burcuhuff/AI-Security-Portfolio/blob/main/scripts/Security+701/images/Dashboard-Tabs1-2.png?raw=true">
+</p>
 
 # Env Setup
 
