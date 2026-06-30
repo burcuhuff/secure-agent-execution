@@ -52,6 +52,11 @@ Streamlit or Flask app showing original vs anonymized vs differentially-private 
 <img width="300" height="300" alt="Tabs 1 and 2, Sidebar" src="https://github.com/burcuhuff/AI-Security-Portfolio/blob/main/scripts/Security+701/images/Dashboard-Tabs1-2.png?raw=true">
 </p>
 
+<p>
+<img width="300" height="300" alt="Tab3 (l-diversity)" src="https://github.com/burcuhuff/AI-Security-Portfolio/blob/main/scripts/Security+701/images/Dashboard-Tab3.png?raw=true">
+<img width="300" height="300" alt="Tab4 (DP)" src="https://github.com/burcuhuff/AI-Security-Portfolio/blob/main/scripts/Security+701/images/Dashboard-Tab4.png?raw=true"> 
+</p>
+
 # Env Setup
 
 ### Python 3.13.7 via pyenv
