@@ -24,13 +24,22 @@ df = load_data()
 st.sidebar.header("Privacy Parameters")
 k_value = st.sidebar.slider("k-anonymity (k)", min_value=2, max_value=20, value=5)
 l_value = st.sidebar.slider("l-diversity (l)", min_value=2, max_value=5, value=2)
-epsilon_value = st.sidebar.slider(
+epsilon = st.sidebar.slider(
     "Differential Privacy (ε)", 
     min_value=0.1, 
     max_value=10.0, 
     value=1.0, 
     step=0.1
 )  
+
+st.sidebar.markdown("""
+---
+**ε guide:**
+- ε < 0.1 → Strong privacy, high noise
+- ε = 1.0 → Balanced (common in practice)
+- ε > 5.0 → Weak privacy, low noise
+""")
+
 
  # tabs
 tab1, tab2, tab3, tab4 = st.tabs([ 
@@ -143,3 +152,124 @@ with tab2:
     ax.set_title('Distribution of K-Anonymous Group Sizes')
     ax.legend()
     st.pyplot(fig)
+
+# Tab3 l-diversity
+with tab3:
+    st.header("L-Diversity")
+    st.markdown("""
+    **What it does:** Extends k-anonymity by requiring each group 
+    to have at least l distinct values for the sensitive attribute (salary).
+    
+    **Why it matters:** A k-anonymous group where everyone earns 
+    the same salary still leaks that information to an attacker.
+    """)
+
+    QI = ['age', 'gender', 'department']
+    anon_df = anonymize_no_zip(df, age_range=10)
+    anon_suppressed = suppress_violations(anon_df, QI, k_value)
+
+    satisfies_l, violations_l = check_l_diversity(
+        anon_suppressed, QI, 'salary', l_value
+    )
+
+    col1, col2, col3 = st.columns(3)
+    col1.metric("l value", l_value)
+    col2.metric(
+        "L-Diversity Satisfied",
+        "✅ Yes" if satisfies_l else "❌ No"
+    )
+    col3.metric("Violations", violations_l)
+
+    st.subheader("Distinct Salary Bands per Group")
+    diversity_df = anon_suppressed.groupby(QI)['salary'].apply(
+        lambda x: x.apply(generalize_salary).nunique()
+    ).reset_index(name='distinct_salary_bands')
+
+    fig, ax = plt.subplots(figsize=(8, 3))
+    ax.hist(diversity_df['distinct_salary_bands'], bins=10,
+            color='#534AB7', edgecolor='white')
+    ax.axvline(x=l_value, color='red', linestyle='--',
+               label=f'l={l_value}')
+    ax.set_xlabel('Distinct Salary Bands in Group')
+    ax.set_ylabel('Number of Groups')
+    ax.set_title('L-Diversity Distribution Across Groups')
+    ax.legend()
+    st.pyplot(fig)
+
+    if not satisfies_l:
+        st.warning(f"""
+        ⚠️ L={l_value} not satisfied. The violating group is typically 
+        'Non-binary, Sales, age 60-69' — a rare demographic combination 
+        with limited salary diversity. Consider accepting l=2 or 
+        suppressing this group (with fairness implications).
+        """)
+
+# Tab4 differential privacy
+with tab4:
+    st.header("Differential Privacy")
+    st.markdown("""
+    **What it does:** Adds mathematically calibrated Laplace noise 
+    to query results, providing a provable privacy guarantee regardless 
+    of attacker's background knowledge.
+    
+    **Key insight:** ε is a budget, not just a parameter. 
+    Every query consumes epsilon — production systems use a 
+    privacy accountant to track total spend.
+    """)
+
+    sensitivity = compute_sensitivity(df, 'salary')
+
+    # Private average salary by department
+    results = []
+    for dept in df['department'].unique():
+        dept_df = df[df['department'] == dept]
+        true_avg = dept_df['salary'].mean()
+        private_avg = laplace_mechanism(true_avg, sensitivity, epsilon)
+        results.append({
+            'Department': dept,
+            'True Avg Salary': f"${true_avg:,.0f}",
+            'Private Avg Salary': f"${max(0, private_avg):,.0f}",
+            'Noise Added': f"${private_avg - true_avg:+,.0f}"
+        })
+
+    results_df = pd.DataFrame(results)
+
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Epsilon (ε)", epsilon)
+    col2.metric("Sensitivity", f"${sensitivity:.2f}")
+    col3.metric("Noise Scale (Δf/ε)", f"${sensitivity/epsilon:,.2f}")
+
+    st.subheader("True vs Private Average Salary")
+    st.dataframe(results_df)
+
+    # Tradeoff chart
+    st.subheader("Privacy/Accuracy Tradeoff")
+    epsilons = [0.01, 0.1, 0.5, 1.0, 5.0, 10.0]
+    avg_noise = []
+    for eps in epsilons:
+        noise_vals = [
+            abs(laplace_mechanism(
+                df[df['department']==d]['salary'].mean(),
+                sensitivity, eps
+            ) - df[df['department']==d]['salary'].mean())
+            for d in df['department'].unique()
+        ]
+        avg_noise.append(np.mean(noise_vals))
+
+    fig, ax = plt.subplots(figsize=(8, 3))
+    ax.plot(epsilons, avg_noise, marker='o', color='#1D9E75', linewidth=2)
+    ax.axvline(x=epsilon, color='red', linestyle='--',
+               label=f'Current ε={epsilon}')
+    ax.set_xlabel('Epsilon (ε) — higher = less privacy')
+    ax.set_ylabel('Average Absolute Noise ($)')
+    ax.set_title('Privacy Budget vs Accuracy Tradeoff')
+    ax.set_xscale('log')
+    ax.grid(True, alpha=0.3)
+    ax.legend()
+    st.pyplot(fig)
+
+    st.info(f"""
+    **At ε={epsilon}:** Average noise ≈ ${sensitivity/epsilon:,.0f} per query.
+    Sensitivity is low ($24.83) because n=5,000 — larger datasets 
+    are naturally more privacy-friendly under differential privacy.
+    """)
